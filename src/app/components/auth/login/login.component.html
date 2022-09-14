@@ -3,7 +3,7 @@
         <h5>Login Page</h5>
         <p>Please fill in the required fields</p>
 
-        <form #loginForm="ngForm">
+        <form #loginForm="ngForm" (ngSubmit)="login(loginForm)">
             <div class="form-group">
                 Email
                 <input type="email" required email #email name="email" ngModel [class]="inputValidKontrol(loginForm,'email')" style="border: 1px solid;">

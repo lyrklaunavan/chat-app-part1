@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { SwalService } from 'src/app/services/swal.service';
 
 @Component({
   selector: 'app-login',
@@ -8,9 +9,21 @@ import { NgForm } from '@angular/forms';
 })
 export class LoginComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private _swal: SwalService
+  ) { }
 
   ngOnInit(): void {
+  }
+
+  login(form: NgForm){
+    if (!form.valid) {
+      this._swal.toastCagir("Fill in the required fields","Error!","error")
+      return;
+    }
+
+    console.log(form.value);
+    
   }
 
   inputValidKontrol(form: NgForm, input: string){  
