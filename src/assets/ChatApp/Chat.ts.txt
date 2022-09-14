@@ -1,0 +1,23 @@
+constructor(
+  ) {   
+    this._signalR.start("https://angularegitimleriapi.ecnorow.com/chat-hub")
+   } 
+
+  ngOnInit(): void {   
+    this._signalR.on("messageMethod", message => {      
+      this.metot();
+    })
+  }
+
+ metot(){
+    this._chat.getChats(this.userId, this.toUserId).subscribe((res)=>{
+      this.chats = res.data;
+      this.getChats();
+      if (this.toUserId > 0) {
+        this.toUserName = this.chatUsers.filter(p=> p.userId == this.toUserId)[0].userName;
+        this.toUserAvatar = this.chatUsers.filter(p=> p.userId == this.toUserId)[0].avatar;
+      }
+      this.getChatUserList();      
+    })
+  }
+  

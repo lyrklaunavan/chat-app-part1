@@ -1,0 +1,32 @@
+metot: getChatUserList
+api: chats/GetChatUserList/userId (number)
+Type: Get
+
+metot: readChats
+api: chats/ReadChats/userId/toUserId
+Type: Get
+
+metot: getChats
+api: chats/GetChats/userId/toUserId
+Type: Get
+
+metot: add
+api: chats/Add
+Type: post
+
+export class ChatModel{
+    id: number;
+    userId: number;
+    toUserId: number;    
+    date: string;
+    message: string;
+    isRead: boolean;
+}
+
+
+export class ChatUserModel{
+    userId: number;
+    userName: string;
+    avatar: string;
+    unReadMessageCount: number;
+}

@@ -1,0 +1,8 @@
+api: 'auth/login';
+Type: Post
+
+export class LoginModel{
+    email: string = "";
+    password: string = "";
+}
+

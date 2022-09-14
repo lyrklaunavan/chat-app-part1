@@ -1,0 +1,2 @@
+ apiUrl: 'https://angularegitimleriapi.ecnorow.com/api/',
+ fileUrl: 'https://files.ecnorow.com/chat/'

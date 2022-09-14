@@ -1,0 +1,14 @@
+api: "auth/register
+Type: Post
+
+
+export class RegisterModel{
+    name: string;
+    email: string;
+    password: string;
+    image: any;
+}
+
+* Model FormData olarak gönderilmeli
+* Şifre en az 6 karakter olmalı, bir küçük bir büyük bir özel karakter birde rakam bulunmalı
+
