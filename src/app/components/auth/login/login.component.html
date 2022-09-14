@@ -2,25 +2,28 @@
     <div style="margin: 4%;">
         <h5>Login Page</h5>
         <p>Please fill in the required fields</p>
-    <div class="form-group">
-        Email
-        <input type="email" class="form-control" style="border: 1px solid;">
-    </div>
 
-    <div class="form-group mt-2">
-        Password
-        <input type="password" class="form-control" style="border: 1px solid;">
-    </div>
+        <form #loginForm="ngForm">
+            <div class="form-group">
+                Email
+                <input type="email" required email #email name="email" ngModel class="form-control" style="border: 1px solid;">
+            </div>
 
-    <div class="form-group mt-2">
-        <button class="btn btn-primary w-100">
-            <i class="fa fa-sign-in"></i>
-            Login
-        </button>
-        <button class="btn btn-danger w-100 mt-2">
-            <i class="fa fa-users"></i>
-            Register
-        </button>
+            <div class="form-group mt-2">
+                Password
+                <input type="password" required minlength="6" #password name="password" ngModel class="form-control" style="border: 1px solid;">
+            </div>
+
+            <div class="form-group mt-2">
+                <button class="btn btn-primary w-100">
+                    <i class="fa fa-sign-in"></i>
+                    Login
+                </button>
+                <button class="btn btn-danger w-100 mt-2">
+                    <i class="fa fa-users"></i>
+                    Register
+                </button>
+            </div>
+        </form>
     </div>
-</div>
 </div>
