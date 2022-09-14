@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  apiUrl: ""
+  apiUrl: "https://angularegitimleriapi.ecnorow.com/api/",
+  fileUrl: "https://files.ecnorow.com/chat/"
 };
 
 /*
