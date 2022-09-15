@@ -2,6 +2,7 @@ import { NgForOf } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ErrorService } from 'src/app/services/error.service';
+import { SwalService } from 'src/app/services/swal.service';
 import { AuthService } from '../services/auth.service';
 
 @Component({
@@ -27,7 +28,8 @@ export class RegisterComponent implements OnInit {
   selectedItem: string = "List 1";
   constructor(
     private _auth: AuthService,
-    private _error: ErrorService
+    private _error: ErrorService,
+    private _swal: SwalService
   ) { }
 
   ngOnInit(): void {
@@ -56,9 +58,9 @@ export class RegisterComponent implements OnInit {
     this._auth.register(formData).subscribe({
       next: (res)=> { 
         this.isLoading = false 
-        let element = (<HTMLButtonElement>(document.getElementById("btnModalClose"))).click(); 
-        
-        console.log(res)
+        //let element = (<HTMLButtonElement>(document.getElementById("btnModalClose"))).click(); 
+        this._swal.toastCagir("Kayıt başarıyla tamamlandı. Giriş yapabilirsiniz","Başarılı!","success")
+        //console.log(res)
       },
       error: (err)=> {
         this.isLoading = false

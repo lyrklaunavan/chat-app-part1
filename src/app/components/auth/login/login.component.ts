@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 import { ErrorService } from 'src/app/services/error.service';
 import { SwalService } from 'src/app/services/swal.service';
 import { AuthService } from '../services/auth.service';
@@ -16,7 +17,8 @@ export class LoginComponent implements OnInit {
   constructor(
     private _swal: SwalService,
     private _auth: AuthService,
-    private _err: ErrorService
+    private _err: ErrorService,
+    private _router: Router
   ) { }
 
   ngOnInit(): void {
@@ -31,6 +33,9 @@ export class LoginComponent implements OnInit {
     this._auth.login(form.value).subscribe({
       next: (res)=> {
         console.log(res)
+        localStorage.setItem("token",res.data.accessToken)
+        this._auth.token = res.data.accessToken;
+        this._router.navigateByUrl("/")
         this.isLoading = false
       },
       error: (err)=> {

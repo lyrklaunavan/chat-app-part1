@@ -9,6 +9,7 @@ import { LoginModel } from '../models/login.model';
 export class AuthService {
 
   apiUrl = environment.apiUrl;
+  token: string = "";
 
   constructor(
     private _http: HttpClient
