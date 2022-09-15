@@ -55,7 +55,9 @@ export class RegisterComponent implements OnInit {
     this.isLoading = true;
     this._auth.register(formData).subscribe({
       next: (res)=> { 
-        this.isLoading = false       
+        this.isLoading = false 
+        let element = (<HTMLButtonElement>(document.getElementById("btnModalClose"))).click(); 
+        
         console.log(res)
       },
       error: (err)=> {
