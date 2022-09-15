@@ -18,4 +18,9 @@ export class AuthService {
       let api = this.apiUrl + "ChatAuth/login";
       return this._http.post<any>(api,model);
     }
+
+    register(formData: any){
+      let api = this.apiUrl + "ChatAuth/register";
+      return this._http.post<any>(api,formData);
+    }
 }

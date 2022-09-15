@@ -19,5 +19,11 @@ export class ErrorService {
     if (err.status == 404) {
       this._swal.toastCagir("Not found api","Error!","error")
     }
+
+    if (err.status == 500 && err.error?.Errors){
+      err.error.Errors.forEach((element: any) => {
+        this._swal.toastCagir(element.ErrorMessage,"Error!","error")
+      });
+    }
   }
 }

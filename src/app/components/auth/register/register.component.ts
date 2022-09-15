@@ -1,6 +1,8 @@
 import { NgForOf } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { ErrorService } from 'src/app/services/error.service';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-register',
@@ -10,7 +12,7 @@ import { NgForm } from '@angular/forms';
 export class RegisterComponent implements OnInit {
 
   img: any;
-  text: string = "";
+  isLoading: boolean = false;
   readerImg: any;
   // list: string[] = [
   //   "List 1",
@@ -23,7 +25,10 @@ export class RegisterComponent implements OnInit {
   // ]
 
   selectedItem: string = "List 1";
-  constructor() { }
+  constructor(
+    private _auth: AuthService,
+    private _error: ErrorService
+  ) { }
 
   ngOnInit(): void {
   }
@@ -46,6 +51,20 @@ export class RegisterComponent implements OnInit {
     formData.append("email",form.value.email);
     formData.append("password",form.value.password);
     formData.append("image",this.img,this.img.fileName);
+    
+    this.isLoading = true;
+    this._auth.register(formData).subscribe({
+      next: (res)=> { 
+        this.isLoading = false       
+        console.log(res)
+      },
+      error: (err)=> {
+        this.isLoading = false
+        this._error.errorHandler(err)
+        console.log(err)}
+      
+      })
+    
   }
 
 }
