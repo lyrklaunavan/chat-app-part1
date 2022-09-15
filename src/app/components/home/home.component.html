@@ -6,9 +6,9 @@
                     <h3>Kullanıcılar</h3>
                 </div>
                 <hr>
-                <div class="form-group mt-4">
-                    <img src="/assets/img.jpg" alt="" style="border-radius: 500px;" width="50px">
-                    <span class="text-white">&nbsp; Kullanıcı Adı</span>
+                <div class="form-group mt-4" *ngFor="let user of chatUsers">
+                    <img src="{{fileUrl}}/avatars/{{user.avatar}}" alt="" style="border-radius: 500px;" width="50px">
+                    <span class="text-white">&nbsp; {{user.userName}}</span>
                 </div>
             </div>
             <div class="col-md-9" style="border-left: 1px solid white;height: 600px;">
